@@ -55,3 +55,6 @@ There are two things you can do about this warning:
 
 (global-auto-complete-mode)
 (autopair-global-mode)
+
+(when (version<= "26.0.50" emacs-version )
+  (global-display-line-numbers-mode))
