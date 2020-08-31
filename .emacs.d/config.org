@@ -22,7 +22,7 @@
 *** Load
 #+BEGIN_SRC emacs-lisp
 (require 'dracula-theme)
-(load-theme 'dracula)
+(load-theme 'dracula t)
 #+END_SRC
 
 ** Fonts
