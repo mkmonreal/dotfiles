@@ -19,6 +19,7 @@
 #+BEGIN_SRC emacs-lisp
 (unless (package-installed-p 'dracula-theme)(package-install 'dracula-theme))
 #+END_SRC
+
 *** Load
 #+BEGIN_SRC emacs-lisp
 (require 'dracula-theme)
@@ -33,9 +34,9 @@
 ** Packages
 *** Install
 #+BEGIN_SRC emacs-lisp
-(unless (package-installed-p 'autopair) (pacake-install 'atopair))
+(unless (package-installed-p 'autopair) (package-install 'autopair))
 
-(unless (package-installed-p 'auto-complete) (pacake-install 'auto-complete))
+(unless (package-installed-p 'auto-complete) (package-install 'auto-complete))
 #+END_SRC
 
 *** Load
