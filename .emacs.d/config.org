@@ -1,0 +1,48 @@
+* Emacs configuration
+** General
+#+BEGIN_SRC emacs-lisp
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+(setq backup-directory-alist `(("." . "~/.saves")))
+#+END_SRC
+
+** Repositories
+#+BEGIN_SRC emacs-lisp
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
+#+END_SRC
+
+** Theme
+*** Install
+#+BEGIN_SRC emacs-lisp
+(unless (package-installed-p 'dracula-theme)(package-install 'dracula-theme))
+#+END_SRC
+*** Load
+#+BEGIN_SRC emacs-lisp
+(require 'dracula-theme)
+(load-theme 'dracula)
+#+END_SRC
+
+** Fonts
+#+BEGIN_SRC emacs-lisp
+(set-frame-font "Ubuntu Mono-12")
+#+END_SRC
+
+** Packages
+*** Install
+#+BEGIN_SRC emacs-lisp
+(unless (package-installed-p 'autopair) (pacake-install 'atopair))
+
+(unless (package-installed-p 'auto-complete) (pacake-install 'auto-complete))
+#+END_SRC
+
+*** Load
+#+BEGIN_SRC emacs-lisp
+(require 'autopair)
+(autopair-global-mode)
+
+(require 'auto-complete)
+(global-auto-complete-mode)
+#+END_SRC
