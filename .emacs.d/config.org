@@ -4,6 +4,7 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (setq backup-directory-alist `(("." . "~/.saves")))
+(global-linum-mode)
 #+END_SRC
 
 ** Repositories
@@ -14,15 +15,16 @@
 (package-initialize)
 #+END_SRC
 
-** Theme
+** Themes
 *** Install
 #+BEGIN_SRC emacs-lisp
-(unless (package-installed-p 'dracula-theme)(package-install 'dracula-theme))
+(dolist (theme '(dracula-theme))
+(when (not (package-installed-p theme))
+(package-install theme)))
 #+END_SRC
 
 *** Load
 #+BEGIN_SRC emacs-lisp
-(require 'dracula-theme)
 (load-theme 'dracula t)
 #+END_SRC
 
@@ -34,16 +36,13 @@
 ** Packages
 *** Install
 #+BEGIN_SRC emacs-lisp
-(unless (package-installed-p 'autopair) (package-install 'autopair))
-
-(unless (package-installed-p 'auto-complete) (package-install 'auto-complete))
+(dolist (package '(autopair auto-complete))
+(when (not (package-intalled-p package))
+(package-install package)))
 #+END_SRC
 
 *** Load
 #+BEGIN_SRC emacs-lisp
-(require 'autopair)
 (autopair-global-mode)
-
-(require 'auto-complete)
 (global-auto-complete-mode)
 #+END_SRC
