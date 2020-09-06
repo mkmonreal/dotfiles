@@ -36,8 +36,8 @@
 ** Packages
 *** Install
 #+BEGIN_SRC emacs-lisp
-(dolist (package '(autopair auto-complete))
-(when (not (package-intalled-p package))
+(dolist (package '(autopair auto-complete rainbow-delimiters))
+(when (not (package-installed-p package))
 (package-install package)))
 #+END_SRC
 
@@ -45,4 +45,6 @@
 #+BEGIN_SRC emacs-lisp
 (autopair-global-mode)
 (global-auto-complete-mode)
+(add-hook 'org-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'js-mode-hook #'rainbow-delimiters-mode)
 #+END_SRC
