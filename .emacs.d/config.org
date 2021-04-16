@@ -38,7 +38,7 @@
 *** General
 **** Install
 #+BEGIN_SRC emacs-lisp
- (dolist (package '(autopair auto-complete rainbow-delimiters lsp-mode lsp-treemacs json-mode))
+(dolist (package '(autopair auto-complete rainbow-delimiters lsp-mode lsp-java lsp-treemacs json-mode magit))
 (when (not (package-installed-p package))
 (package-install package)))
 #+END_SRC

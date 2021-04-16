@@ -1,4 +1,7 @@
+.emacs
 .emacs.d/ac-comphist.dat
 .emacs.d/auto-save-list/
 .emacs.d/config.el
 .emacs.d/elpa/
+.emacs.d/.cache/
+.emacs.d/transient/
