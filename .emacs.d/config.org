@@ -13,6 +13,7 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
+(package-refresh-contents)
 #+END_SRC
 
 ** Themes
@@ -34,17 +35,40 @@
 #+END_SRC
 
 ** Packages
-*** Install
+*** General
+**** Install
 #+BEGIN_SRC emacs-lisp
-(dolist (package '(autopair auto-complete rainbow-delimiters))
+ (dolist (package '(autopair auto-complete rainbow-delimiters lsp-mode lsp-treemacs json-mode))
 (when (not (package-installed-p package))
 (package-install package)))
 #+END_SRC
 
-*** Load
+**** Load
 #+BEGIN_SRC emacs-lisp
 (autopair-global-mode)
 (global-auto-complete-mode)
 (add-hook 'org-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'js-mode-hook #'rainbow-delimiters-mode)
 #+END_SRC
+
+*** Evil
+#+BEGIN_SRC emacs-lisp
+;; Download Evil
+(unless (package-installed-p 'evil)
+  (package-install 'evil))
+
+;; Enable Evil
+(require 'evil)
+(evil-mode 1)
+#+END_SRC
+
+
+*** Godot
+#+BEGIN_SRC emacs-lisp
+(use-package gdscript-mode
+    :straight (gdscript-mode
+               :type git
+               :host github
+               :repo "godotengine/emacs-gdscript-mode"))
+#+END_SRC
+
