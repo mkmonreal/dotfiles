@@ -49,6 +49,7 @@
 (global-auto-complete-mode)
 (add-hook 'org-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'js-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'prog-mode-hook #' lsp)
 #+END_SRC
 
 *** Evil
@@ -62,13 +63,4 @@
 (evil-mode 1)
 #+END_SRC
 
-
-*** Godot
-#+BEGIN_SRC emacs-lisp
-(use-package gdscript-mode
-    :straight (gdscript-mode
-               :type git
-               :host github
-               :repo "godotengine/emacs-gdscript-mode"))
-#+END_SRC
 
