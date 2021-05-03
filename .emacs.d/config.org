@@ -3,8 +3,9 @@
 #+BEGIN_SRC emacs-lisp
 (menu-bar-mode 0)
 (tool-bar-mode 0)
-(setq backup-directory-alist `(("." . "~/.saves")))
 (global-linum-mode)
+(setq backup-directory-alist
+    `(("." . ,(concat user-emacs-directory "backups"))))
 #+END_SRC
 
 ** Repositories
@@ -38,7 +39,7 @@
 *** General
 **** Install
 #+BEGIN_SRC emacs-lisp
-(dolist (package '(autopair auto-complete rainbow-delimiters lsp-mode lsp-java lsp-treemacs json-mode magit))
+(dolist (package '(autopair company rainbow-delimiters lsp-mode lsp-java lsp-treemacs json-mode magit))
 (when (not (package-installed-p package))
 (package-install package)))
 #+END_SRC
@@ -46,10 +47,9 @@
 **** Load
 #+BEGIN_SRC emacs-lisp
 (autopair-global-mode)
-(global-auto-complete-mode)
-(add-hook 'org-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'js-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'prog-mode-hook #' lsp)
+(add-hook 'after-init-hook 'global-company-mode)
 #+END_SRC
 
 *** Evil
