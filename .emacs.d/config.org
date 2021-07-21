@@ -4,8 +4,9 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (global-linum-mode)
-(setq backup-directory-alist
-    `(("." . ,(concat user-emacs-directory "backups"))))
+(setq auto-save-default nil)
+(setq make-backup-files nil)
+(setq create-lockfiles nil)
 #+END_SRC
 
 ** Repositories
@@ -48,8 +49,14 @@
 #+BEGIN_SRC emacs-lisp
 (autopair-global-mode)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'prog-mode-hook #' lsp)
+(add-hook 'prog-mode-hook #'lsp)
 (add-hook 'after-init-hook 'global-company-mode)
+#+END_SRC
+
+**** Set up
+#+BEGIN_SRC emacs-lisp
+(setq company-idle-delay 0)
+(setq company-minimum-prefix-length 1)
 #+END_SRC
 
 *** Evil
@@ -63,4 +70,14 @@
 (evil-mode 1)
 #+END_SRC
 
+*** React
+**** Install
+#+BEGIN_SRC emacs-lisp
+(unless (package-installed-p 'rjsx)
+  (package-install 'rjsx-mode))
+#+END_SRC 
 
+**** Load
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
+#+END_SRC
