@@ -201,5 +201,5 @@ bindsym $mod+Pause mode "$mode_system"
 
 # Startup applications
 exec copyq
-exec sh ~/.fehbg
-
+exec sh ~/.monitors | exec sh ~/.fehbg
+# exec sh ~/.fehbg
