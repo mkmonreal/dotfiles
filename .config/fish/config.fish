@@ -1,0 +1,1 @@
+/home/mkmonreal/.config/fish/config.fish
