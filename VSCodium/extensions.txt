@@ -1,0 +1,15 @@
+ahmadawais.shades-of-purple
+astro-build.astro-vscode
+dbaeumer.vscode-eslint
+dhedgecock.radical-vscode
+dracula-theme.theme-dracula
+esbenp.prettier-vscode
+ibm.output-colorizer
+max-ss.cyberpunk
+ms-python.autopep8
+ms-python.debugpy
+ms-python.python
+nerosiar.just-black
+sdras.night-owl
+sonarsource.sonarlint-vscode
+vscodevim.vim
