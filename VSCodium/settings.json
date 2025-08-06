@@ -1,1 +1,4 @@
-.config/VSCodium/User/settings.json
+{
+    "workbench.colorTheme": "Dracula Theme",
+    "editor.fontFamily": "'Red Hat Mono','Droid Sans Mono', 'monospace', monospace"
+}
