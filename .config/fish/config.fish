@@ -7,3 +7,10 @@ end
 
 oh-my-posh init fish --config ~/Git/dracula/oh-my-posh/dracula.omp.json | source
 fastfetch
+
+# pnpm
+set -gx PNPM_HOME "/home/mkmonreal/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
