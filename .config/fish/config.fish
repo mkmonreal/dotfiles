@@ -1,5 +1,6 @@
 set -g fish_greeting
 set -gx PATH $PATH export $HOME/.local/bin
+set -gx PATH $PATH export $HOME/.config/emacs/bin
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
