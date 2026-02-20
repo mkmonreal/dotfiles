@@ -68,7 +68,13 @@ ZSH_THEME="dracula"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+	git
+	zsh-autosuggestions
+	zsh-syntax-highlighting
+	zsh-completions
+	history-substring-search
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,3 +108,8 @@ source $ZSH/oh-my-zsh.sh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export DRACULA_THEMES_DIR="$HOME/Git/dracula"
+eval "$(oh-my-posh init zsh --config $DRACULA_THEMES_DIR/oh-my-posh/dracula.omp.json)"
+
+fastfetch
