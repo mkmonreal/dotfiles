@@ -1,5 +1,9 @@
 {
     "workbench.colorTheme": "Dracula Theme",
-    "editor.fontFamily": "'Red Hat Mono','Droid Sans Mono', 'monospace', monospace",
-    "git.autofetch": true
+    "editor.fontFamily": "'DaddyTimeMono Nerd Font Mono', 'Red Hat Mono','Droid Sans Mono', 'monospace', monospace",
+    "workbench.settings.applyToAllProfiles": [
+        "editor.fontFamily"
+    ],
+    "editor.fontSize": 16,
+    "claudeCode.preferredLocation": "panel"
 }
