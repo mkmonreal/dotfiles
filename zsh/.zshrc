@@ -104,12 +104,30 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+path+=("$HOME/.local/bin")
+path+=("$HOME/.config/emacs/bin")
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# oh-my-posh
 export DRACULA_THEMES_DIR="$HOME/Git/dracula"
 eval "$(oh-my-posh init zsh --config $DRACULA_THEMES_DIR/oh-my-posh/dracula.omp.json)"
+# oh-my-posh end
 
 fastfetch
+
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+#uv
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
+#uv end
+
