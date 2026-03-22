@@ -77,3 +77,6 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(after! apheleia
+  (setf (alist-get 'js-ts-mode apheleia-mode-alist) 'prettier-js))
