@@ -1,2 +1,3 @@
-path+=("$HOME/.local/bin")                                                                                path+=("$HOME/.config/emacs/bin")
+path+=("$HOME/.local/bin")
+path+=("$HOME/.config/emacs/bin")
 
