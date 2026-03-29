@@ -79,4 +79,8 @@
 ;; they are implemented.
 
 (after! apheleia
-  (setf (alist-get 'js-ts-mode apheleia-mode-alist) 'prettier-js))
+  (setf (alist-get 'js-ts-mode apheleia-mode-alist) 'prettier)
+  (add-hook 'js-ts-mode-hook #'apheleia-mode))
+
+(after! corfu
+  (setq corfu-auto-delay 0))
