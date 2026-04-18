@@ -104,16 +104,20 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# nvm
+if [[ -d "$HOME/.config/nvm" ]]; then
+	export NVM_DIR="$HOME/.config/nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+#nvm end
 
 # oh-my-posh
-export DRACULA_THEMES_DIR="$HOME/Git/dracula"
-eval "$(oh-my-posh init zsh --config $DRACULA_THEMES_DIR/oh-my-posh/dracula.omp.json)"
+if [[ -d "$HOME/Git/dracula" ]]; then
+	export DRACULA_THEMES_DIR="$HOME/Git/dracula"
+	eval "$(oh-my-posh init zsh --config $DRACULA_THEMES_DIR/oh-my-posh/dracula.omp.json)"
+fi
 # oh-my-posh end
-
-fastfetch
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
@@ -128,3 +132,10 @@ eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"
 #uv end
 
+fastfetch
+
+. "$HOME/.local/share/../bin/env"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
