@@ -84,3 +84,5 @@
 
 (after! corfu
   (setq corfu-auto-delay 0))
+
+(setq ispell-program-name "hunspell")
