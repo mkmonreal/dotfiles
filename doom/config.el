@@ -78,16 +78,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(setf (alist-get 'ruff-isort apheleia-formatters)
-      '("ruff" "check" "--select" "I" "--fix" "--exit-zero"
-        "--stdin-filename" filepath "-"))
-
-(setf (alist-get 'ruff apheleia-formatters)
-      '("ruff" "format" "--stdin-filename" filepath "-"))
-
-(setf (alist-get 'python-mode    apheleia-mode-alist) '(ruff-isort ruff))
-(setf (alist-get 'python-ts-mode apheleia-mode-alist) '(ruff-isort ruff))
-
 (after! apheleia
   (setf (alist-get 'js-ts-mode apheleia-mode-alist) 'prettier)
   ;; (add-hook 'js-ts-mode-hook #'apheleia-mode)
@@ -99,19 +89,27 @@
   (setf (alist-get 'python-mode    apheleia-mode-alist) '(ruff-isort ruff))
   (setf (alist-get 'python-ts-mode apheleia-mode-alist) '(ruff-isort ruff)))
 
+(set-eglot-client! '(python-mode python-ts-mode)
+                   '("basedpyright-langserver" "--stdio"))
+
+(setq-default eglot-workspace-configuration
+              '(:basedpyright (:analysis (:typeCheckingMode "standard"
+                                          :diagnosticMode "openFilesOnly"
+                                          :autoImportCompletions t))))
+
 (after! corfu
   (setq corfu-auto-delay 0))
-
-(after! ispell
-  (setq ispell-program-name "hunspell"))
 
 (after! python
   (add-hook 'python-base-mode-hook #'pet-mode -10))
 
-(setq ispell-hunspell-dict-paths-alist
-      '(("es" "/usr/share/hunspell/es_ES.dic")
-        ("es_ES" "/usr/share/hunspell/es_ES.dic")
-        ("en_US" "/usr/share/hunspell/en_US.dic")))
+
+(after! ispell
+  (setq ispell-program-name "hunspell"
+        ispell-hunspell-dict-paths-alist
+        '(("es" "/usr/share/hunspell/es_ES.dic")
+          ("es_ES" "/usr/share/hunspell/es_ES.dic")
+          ("en_US" "/usr/share/hunspell/en_US.dic"))))
 
 ;; (after! latex
 ;;   (add-hook 'LaTeX-mode-hook
