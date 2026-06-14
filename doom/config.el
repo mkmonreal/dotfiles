@@ -103,6 +103,39 @@
 (after! python
   (add-hook 'python-base-mode-hook #'pet-mode -10))
 
+(use-package! svelte-mode
+  :mode "\\.svelte\\'")
+
+;; (after! eglot
+;;   (set-eglot-client! 'svelte-mode
+;;                      '("rass" "--" "svelteserver" "--stdio" "--" "tailwindcss-language-server" "--stdio"))
+;;   (set-eglot-client! '(js-ts-mode typescript-ts-mode tsx-ts-mode)
+;;                      '("rass" "--" "typescript-language-server" "--stdio" "--" "tailwindcss-language-server" "--stdio")))
+(after! eglot
+  (set-eglot-client! 'svelte-mode '("svelteserver" "--stdio"))
+  (set-eglot-client! '(js-ts-mode typescript-ts-mode tsx-ts-mode)
+                     '("typescript-language-server" "--stdio")))
+
+(add-hook 'svelte-mode-hook #'lsp!)
+
+(after! apheleia
+  (dolist (mode '(typescript-ts-mode
+                  tsx-ts-mode
+                  css-ts-mode
+                  css-mode
+                  scss-mode
+                  json-ts-mode
+                  json-mode
+                  web-mode
+                  html-mode
+                  mhtml-mode
+                  svelte-mode))
+    (setf (alist-get mode apheleia-mode-alist) 'prettier)))
+
+(after! emmet-mode
+  (setq emmet-expand-jsx-className? t))
+(add-hook 'tsx-ts-mode-hook #'emmet-mode)
+(add-hook 'js-ts-mode-hook #'emmet-mode)
 
 (after! ispell
   (setq ispell-program-name "hunspell"

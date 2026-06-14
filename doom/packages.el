@@ -54,3 +54,4 @@
 ;; (unpin! t)
 
 (package! pet)
+(package! svelte-mode)
