@@ -1,5 +1,4 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
@@ -144,6 +143,9 @@
           ("es_ES" "/usr/share/hunspell/es_ES.dic")
           ("en_US" "/usr/share/hunspell/en_US.dic"))))
 
-;; (after! latex
-;;   (add-hook 'LaTeX-mode-hook
-;;             (add-hook 'before-save-hook #'LaTeX-fill-buffer nil t)))
+(after! apheleia
+  (dolist (mode '(latex-mode LaTeX-mode TeX-latex-mode))
+    (setf (alist-get mode apheleia-mode-alist) 'latexindent)))
+
+(setq-default fill-column 80)
+(add-hook 'LaTeX-mode-hook #'turn-on-auto-fill)
